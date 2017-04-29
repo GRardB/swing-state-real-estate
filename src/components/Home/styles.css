@@ -32,6 +32,8 @@ body {
   background:-webkit-linear-gradient(top,  $circumstance 0%, $pomp 100%);
   background:linear-gradient(to bottom,  $circumstance 0%, $pomp 100%);
   filter:progid:DXImageTransform.Microsoft.gradient( startColorstr='$circumstance', endColorstr='$pomp',GradientType=0 );
+  background-size:cover;
+  background-attachment:fixed;
   color:$white;
   font:1rem/1.6 'Asap', helvetica, arial, sans-serif;
 }
@@ -154,6 +156,10 @@ select {
   transition:border-bottom 150ms ease-in-out, background 150ms ease-in-out;
   &:hover {
     background:lighten($pomp, 3%);
+    animation-duration:1s;
+    animation-fill-mode:both;
+    transform-origin:center;
+    animation-name:swingSmall;
   }
   &:focus {
     outline:0;
@@ -209,6 +215,27 @@ select {
 
   80% {
     transform:rotate3d(0, 0, 1, -5deg);
+  }
+
+  to {
+    transform:rotate3d(0, 0, 1, 0deg);
+  }
+}
+@keyframes swingSmall {
+  20% {
+    transform:rotate3d(0, 0, 1, 3deg);
+  }
+
+  40% {
+    transform:rotate3d(0, 0, 1, -3deg);
+  }
+
+  60% {
+    transform:rotate3d(0, 0, 1, 3deg);
+  }
+
+  80% {
+    transform:rotate3d(0, 0, 1, -3deg);
   }
 
   to {
