@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Counties = (counties) => (
+const Counties = ({ counties }) => (
   <ul>
     {
       counties.map(county => (

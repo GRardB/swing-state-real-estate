@@ -15,9 +15,9 @@ const appConfig = {
   devServer: {
     compress: true,
     contentBase: './dist',
-    historyApiFallback: {
-      index: 'index.html'
-    }
+    // historyApiFallback: {
+    //   index: 'index.html'
+    // }
   },
 
   module: {
