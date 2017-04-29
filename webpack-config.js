@@ -73,7 +73,7 @@ const foundationConfig = {
         use: ExtractTextPlugin.extract({
           fallback: 'style-loader',
           use: [
-            'css-loader?modules',
+            'css-loader',
             'sass-loader',
           ],
         }),
