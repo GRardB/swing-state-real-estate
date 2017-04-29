@@ -1,5 +1,5 @@
 $pomp:#455468; //dark blue
-$circumstance:#38485d; //slightly darker blue
+$circumstance:#27374B; //slightly darker blue
 $establishment:#eef4f6; //very light grey
 $republican:#f44c4c; //red
 $democrat:#58bfe6; //blue
@@ -27,11 +27,11 @@ html, body {
   }
 }
 body {
-  background: $circumstance;
-  background: -moz-linear-gradient(top,  $circumstance 0%, $pomp 100%);
-  background: -webkit-linear-gradient(top,  $circumstance 0%, $pomp 100%);
-  background: linear-gradient(to bottom,  $circumstance 0%, $pomp 100%);
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='$circumstance', endColorstr='$pomp',GradientType=0 );
+  background:$circumstance;
+  background:-moz-linear-gradient(top,  $circumstance 0%, $pomp 100%);
+  background:-webkit-linear-gradient(top,  $circumstance 0%, $pomp 100%);
+  background:linear-gradient(to bottom,  $circumstance 0%, $pomp 100%);
+  filter:progid:DXImageTransform.Microsoft.gradient( startColorstr='$circumstance', endColorstr='$pomp',GradientType=0 );
   color:$white;
   font:1rem/1.6 'Asap', helvetica, arial, sans-serif;
 }
@@ -59,6 +59,108 @@ h3 {
   border-bottom:4px $establishment solid;
   padding-bottom:1rem;
 }
+.partyIcon {
+  width:3rem;
+}
+label {
+  line-height:1.2;
+  font-weight:700;
+  text-transform:uppercase;
+  font-style:normal;
+  display:block;
+  span {
+    font-style:italic;
+    display:inline-block;
+    margin-left:0.6rem;
+    vertical-align:middle;
+    text-transform:none;
+    font-weight:400;
+  }
+  strong {
+    text-transform:uppercase;
+    font-style:normal;
+    display:block;
+  }
+}
+.radioButton,.checkButton {
+  display:block;
+  &:before {
+    display:inline-block;
+    content:' ';
+    width:2rem;
+    padding-right:1rem;
+    height:2rem;
+    background-image:url(./empty.png);
+    background-position:left center;
+    background-repeat:no-repeat;
+    background-size:100%;
+    vertical-align:middle;
+  }
+  img {
+    margin-left:0.5rem;
+  }
+}
+input[type="radio"],input[type="checkbox"] {
+  display:none;
+  &:checked + label:before {
+    animation-duration:150ms;
+    animation-fill-mode:both;
+    transform-origin:center;
+    animation-name:radioGrow;
+    background-image:url(./checkradio.png);
+  }
+}
+input[type="checkbox"] {
+  &:checked + label:before {
+    background-image:url(./check.png);
+  }
+}
+.checkButton:before {
+  margin-right:0.8rem;
+}
+label[for="partyRepublican"]:hover { 
+  img {
+    transition:transform 0.25s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    transform:rotate(6deg);
+  }
+}
+label[for="partyDemocrat"]:hover { 
+  img {
+    transition:transform 0.25s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    transform:rotate(-6deg);
+  }
+}
+select {
+  -webkit-appearance:none;
+  background:$establishment url(./caret.png) center right 1rem no-repeat;
+  background-size:auto 0.6rem;
+  padding:0.8rem 1.6rem;
+  border-radius:1rem;
+  border:0;
+  &:focus {
+    outline:0;
+  }
+}
+button {
+  display:inline-block;
+  padding:0.6rem 1.6rem;
+  background:$pomp;
+  width:100%;
+  color:#fff;
+  font:inherit;
+  font-weight:700;
+  border-radius:1rem;
+  border-bottom:0.4rem darken($pomp, 10%) solid;
+  transition:border-bottom 150ms ease-in-out, background 150ms ease-in-out;
+  &:hover {
+    background:lighten($pomp, 3%);
+  }
+  &:focus {
+    outline:0;
+    position:relative;
+    top:2px;
+  }
+}
 @media ($breakpoint) {
   html, body, body > div, body > div > div {
     min-height:100%;
@@ -73,19 +175,19 @@ h3 {
     top:50%;
     transform:translateY(-50%);
     padding:8rem;
-    animation-name: fadeInUp;
-    animation-duration: 1s;
-    animation-fill-mode: both;
+    animation-name:fadeInUp;
+    animation-duration:1s;
+    animation-fill-mode:both;
   }
   .page {
     float:left;
     height:100%;
-    width:67%;
+    width:64%;
     position:relative;
   }
   .preferencesForm {
     float:right;
-    width:33%;
+    width:36%;
     height:100%
   }
   .preferencesForm {
@@ -94,28 +196,28 @@ h3 {
 }
 @keyframes swing {
   20% {
-    transform: rotate3d(0, 0, 1, 15deg);
+    transform:rotate3d(0, 0, 1, 15deg);
   }
 
   40% {
-    transform: rotate3d(0, 0, 1, -10deg);
+    transform:rotate3d(0, 0, 1, -10deg);
   }
 
   60% {
-    transform: rotate3d(0, 0, 1, 5deg);
+    transform:rotate3d(0, 0, 1, 5deg);
   }
 
   80% {
-    transform: rotate3d(0, 0, 1, -5deg);
+    transform:rotate3d(0, 0, 1, -5deg);
   }
 
   to {
-    transform: rotate3d(0, 0, 1, 0deg);
+    transform:rotate3d(0, 0, 1, 0deg);
   }
 }
 @keyframes fadeInUp {
   from {
-    opacity: 0;
+    opacity:0;
     transform:translateY(0%);
   }
 
@@ -124,10 +226,19 @@ h3 {
     transform:translateY(-50%);
   }
 }
+@keyframes radioGrow {
+  from {
+    transform:scale(0);
+  }
+
+  to {
+    transform:scale(1);
+  }
+}
 .swing {
-  animation-duration: 1s;
-  animation-fill-mode: both;
+  animation-duration:1s;
+  animation-fill-mode:both;
   animation-delay:0.6s;
-  transform-origin: top center;
-  animation-name: swing;
+  transform-origin:center;
+  animation-name:swing;
 }

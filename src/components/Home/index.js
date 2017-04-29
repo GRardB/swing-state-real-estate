@@ -7,6 +7,8 @@ import {
 } from 'modules'
 
 import styles from './styles.css';
+import republican from './republican.png';
+import democrat from './democrat.png';
 
 
 class HomeComponent extends Component {
@@ -22,10 +24,18 @@ class HomeComponent extends Component {
         </main>
         <form className={styles.preferencesForm} onSubmit={this.props.onSubmit}>
           <h3>What is your affiliation?</h3>
-          <p><label><input type='radio' name='party' value='republican' />
-           <img src="./images/republican.svg" alt=""/></label></p>
-          <p><label><input type='radio' name='party' value='democrat' />
-           <img src="./images/democrat.svg" alt=""/></label></p>
+          <p><input type='radio' name='party' value='republican' id="partyRepublican" />
+          <label className={styles.radioButton} htmlFor="partyRepublican">
+           <img src={republican} alt="" className={styles.partyIcon}/>
+           <span>I’m a staunch
+           <strong>Republican</strong>
+           </span></label></p>
+          <p><input type='radio' name='party' value='democrat' id="partyDemocrat" />
+          <label className={styles.radioButton} htmlFor="partyDemocrat">
+           <img src={democrat} alt="" className={styles.partyIcon}/>
+           <span>I’m a proud
+           <strong>Democrat</strong>
+           </span></label></p>
           <h3><label htmlFor="state">Where do you want to live?</label></h3>
           <p><select name='state' id="state" className='small-12'>
             <option value='alaska'>Alaska</option>
@@ -34,11 +44,11 @@ class HomeComponent extends Component {
             <option value='new york'>New York</option>
           </select></p>
           <h3>Are you looking to buy or rent?</h3>
-          <p><label><input type='radio' name='transaction' value='buy' />
+          <p><input type='checkbox' name='transaction' id="transactionBuy" value='buy' /><label className={styles.checkButton} htmlFor="transactionBuy">
           Buy</label></p>
-          <p><label><input type='radio' name='transaction' value='rent' />
+          <p><input type='checkbox' name='transaction' id="transactionRent" value='rent' /><label className={styles.checkButton} htmlFor="transactionRent">
           Rent</label></p>
-          <p><button className={styles.submit} type='submit'>Submit</button></p>
+          <p><button className={styles.submit} type='submit'>Swing!</button></p>
         </form>
         { this.props.counties.length > 0 && <Redirect to='/search' />}
       </div>
