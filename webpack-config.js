@@ -1,10 +1,11 @@
+const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const path = require('path')
 const webpack = require('webpack')
 
 const PATH = __dirname + '/dist'
 
-module.exports = {
+const appConfig = {
   entry: {
     app: [
       './src/app.js',
@@ -25,6 +26,16 @@ module.exports = {
         test: /\.js$/,
         use: 'babel-loader',
       },
+      {
+        test: /\.css/,
+        use: ExtractTextPlugin.extract({
+          fallback: 'style-loader',
+          use: [
+            'css-loader?modules',
+            'sass-loader',
+          ],
+        }),
+      },
     ],
   },
 
@@ -34,7 +45,10 @@ module.exports = {
   },
 
   plugins: [
-    new HtmlWebpackPlugin(),
+    new ExtractTextPlugin('app.css'),
+    new HtmlWebpackPlugin({
+      template: './src/index.html',
+    }),
   ],
 
   resolve: {
@@ -44,3 +58,37 @@ module.exports = {
     ],
   },
 }
+
+const foundationConfig = {
+  entry: {
+    foundation: [
+      './src/static/foundation.css',
+    ],
+  },
+
+  module: {
+    rules: [
+      {
+        test: /\.css/,
+        use: ExtractTextPlugin.extract({
+          fallback: 'style-loader',
+          use: [
+            'css-loader?modules',
+            'sass-loader',
+          ],
+        }),
+      },
+    ],
+  },
+
+  output: {
+    filename: '[name].js',
+    path: PATH,
+  },
+
+  plugins: [
+    new ExtractTextPlugin('foundation.css'),
+  ],
+}
+
+module.exports = [ appConfig, foundationConfig ]
