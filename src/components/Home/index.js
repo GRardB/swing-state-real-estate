@@ -38,10 +38,9 @@ class HomeComponent extends Component {
            </span></label></p>
           <h3><label htmlFor="state">Where do you want to live?</label></h3>
           <p><select name='state' id="state" className='small-12'>
-            <option value='alaska'>Alaska</option>
-            <option value='arizona'>Arizona</option>
-            <option value='california'>California</option>
-            <option value='new york'>New York</option>
+           {
+                STATES.map(({name, initials}) => <option key={initials} value={initials}>{name}</option>)
+              }
           </select></p>
           <h3>Are you looking to buy or rent?</h3>
           <p><input type='checkbox' name='transaction' id="transactionBuy" value='buy' /><label className={styles.checkButton} htmlFor="transactionBuy">
@@ -50,7 +49,7 @@ class HomeComponent extends Component {
           Rent</label></p>
           <p><button className={styles.submit} type='submit'>Swing!</button></p>
         </form>
-        { this.props.counties.length > 0 && <Redirect to='/search' />}
+        { this.props.counties.length > 0 && <Redirect to='/search' /> }
       </div>
     )
   }
@@ -77,6 +76,59 @@ const mapDispatchToProps = (dispatch, ownProps) => {
     }
   }
 }
+
+const STATES = [
+  { name: 'Alabama', initials: 'AL'},
+  { name: 'Alaska', initials: 'AK'},
+  { name: 'Arizona', initials: 'AZ'},
+  { name: 'Arkansas', initials: 'AR'},
+  { name: 'California', initials: 'CA'},
+  { name: 'Colorado', initials: 'CO'},
+  { name: 'Connecticut', initials: 'CT'},
+  { name: 'Delaware', initials: 'DE'},
+  { name: 'Florida', initials: 'FL'},
+  { name: 'Georgia', initials: 'GA'},
+  { name: 'Hawaii', initials: 'HI'},
+  { name: 'Idaho', initials: 'ID'},
+  { name: 'Illinois', initials: 'IL'},
+  { name: 'Indiana', initials: 'IN'},
+  { name: 'Iowa', initials: 'IA'},
+  { name: 'Kansas', initials: 'KS'},
+  { name: 'Kentucky', initials: 'KY'},
+  { name: 'Louisiana', initials: 'LA'},
+  { name: 'Maine', initials: 'ME'},
+  { name: 'Maryland', initials: 'MD'},
+  { name: 'Massachusetts', initials: 'MA'},
+  { name: 'Michigan', initials: 'MI'},
+  { name: 'Minnesota', initials: 'MN'},
+  { name: 'Mississippi', initials: 'MS'},
+  { name: 'Missouri', initials: 'MO'},
+  { name: 'Montana', initials: 'MT'},
+  { name: 'Nebraska', initials: 'NE'},
+  { name: 'Nevada', initials: 'NV'},
+  { name: 'New Hampshire', initials: 'NH'},
+  { name: 'New Jersey', initials: 'NJ'},
+  { name: 'New Mexico', initials: 'NM'},
+  { name: 'New York', initials: 'NY'},
+  { name: 'North Carolina', initials: 'NC'},
+  { name: 'North Dakota', initials: 'ND'},
+  { name: 'Ohio', initials: 'OH'},
+  { name: 'Oklahoma', initials: 'OK'},
+  { name: 'Oregon', initials: 'OR'},
+  { name: 'Pennsylvania', initials: 'PA'},
+  { name: 'Rhode Island', initials: 'RI'},
+  { name: 'South Carolina', initials: 'SC'},
+  { name: 'South Dakota', initials: 'SD'},
+  { name: 'Tennessee', initials: 'TN'},
+  { name: 'Texas', initials: 'TX'},
+  { name: 'Utah', initials: 'UT'},
+  { name: 'Vermont', initials: 'VT'},
+  { name: 'Virginia', initials: 'VA'},
+  { name: 'Washington', initials: 'WA'},
+  { name: 'West Virginia', initials: 'WV'},
+  { name: 'Wisconsin', initials: 'WI'},
+  { name: 'Wyoming', initials: 'WY'},
+]
 
 const Home = connect(mapStateToProps, mapDispatchToProps)(HomeComponent)
 
