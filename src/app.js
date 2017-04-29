@@ -8,13 +8,26 @@ import {
   applyMiddleware
 } from 'redux'
 
+import {
+  BrowserRouter as Router,
+  Route,
+  Link,
+} from 'react-router-dom'
+
 import reducers from './modules'
+import {
+  Home
+} from './components'
 
 const store = createStore(reducers, {}, applyMiddleware(thunk))
 
 const App = () => (
   <Provider store={store}>
-    <h1>Hello World</h1>
+    <Router>
+      <div>
+        <Route path="/" component={Home} />
+      </div>
+    </Router>
   </Provider>
 )
 
