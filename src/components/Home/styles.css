@@ -1,3 +1,133 @@
-.submit {
-  background-color: blue;
+$pomp:#455468; //dark blue
+$circumstance:#38485d; //slightly darker blue
+$establishment:#eef4f6; //very light grey
+$republican:#f44c4c; //red
+$democrat:#58bfe6; //blue
+$white:#fff; //white
+
+$breakpoint:'min-width:1024px'; // landscape tablet
+
+@import url('https://fonts.googleapis.com/css?family=Asap:400,400i,700');
+*, *:before, *:after {
+  box-sizing:inherit;
+  max-width:100%;
+}
+h1, h2, h3, p {
+  margin:0;
+  padding:0;
+  & + * {
+    margin:1rem 0 0;
+  }
+}
+html, body {
+  box-sizing:border-box;
+  font-size:16px;
+  @media ($breakpoint) {
+    font-size:20px;
+  }
+}
+body {
+  background: $circumstance;
+  background: -moz-linear-gradient(top,  $circumstance 0%, $pomp 100%);
+  background: -webkit-linear-gradient(top,  $circumstance 0%, $pomp 100%);
+  background: linear-gradient(to bottom,  $circumstance 0%, $pomp 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='$circumstance', endColorstr='$pomp',GradientType=0 );
+  color:$white;
+  font:1rem/1.6 'Asap', helvetica, arial, sans-serif;
+}
+.preferencesForm {
+  color:$pomp;
+  background:$white;
+}
+.preferencesForm, .content {
+  padding:1.6rem;
+}
+.page {
+  text-align:center;
+}
+h1 {
+  font-size:3rem;
+  line-height:1.1;
+}
+h2 {
+  font-size:1.6rem;
+  line-height:1.2;
+}
+h3 {
+  font-size:1.2rem;
+  line-height:1.2;
+  border-bottom:4px $establishment solid;
+  padding-bottom:1rem;
+}
+@media ($breakpoint) {
+  html, body, body > div, body > div > div {
+    min-height:100%;
+    height:100%;
+  }
+  .container {
+    overflow:hidden;
+    height:100%;
+  }
+  .content {
+    position:absolute;
+    top:50%;
+    transform:translateY(-50%);
+    padding:8rem;
+    animation-name: fadeInUp;
+    animation-duration: 1s;
+    animation-fill-mode: both;
+  }
+  .page {
+    float:left;
+    height:100%;
+    width:67%;
+    position:relative;
+  }
+  .preferencesForm {
+    float:right;
+    width:33%;
+    height:100%
+  }
+  .preferencesForm {
+    padding:2.4rem;
+  }
+}
+@keyframes swing {
+  20% {
+    transform: rotate3d(0, 0, 1, 15deg);
+  }
+
+  40% {
+    transform: rotate3d(0, 0, 1, -10deg);
+  }
+
+  60% {
+    transform: rotate3d(0, 0, 1, 5deg);
+  }
+
+  80% {
+    transform: rotate3d(0, 0, 1, -5deg);
+  }
+
+  to {
+    transform: rotate3d(0, 0, 1, 0deg);
+  }
+}
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform:translateY(0%);
+  }
+
+  to {
+    opacity:1;
+    transform:translateY(-50%);
+  }
+}
+.swing {
+  animation-duration: 1s;
+  animation-fill-mode: both;
+  animation-delay:0.6s;
+  transform-origin: top center;
+  animation-name: swing;
 }
