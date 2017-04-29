@@ -1,11 +1,38 @@
 @import url('https://fonts.googleapis.com/css?family=Asap:400,400i,700');
 
+$breakpoint:'min-width:1024px'; // landscape tablet
+
 .display {
   display: block;
+  font-family: "Asap";
+  font-size: 1.2rem;
+  line-height: 1.2;
+  color: #455468;
   background: white;
+  width: 36%;
+  padding: 0.8rem;
+  border-bottom:4px #eef4f6 solid;
+  float: right;
+  clear: right;
+  border-radius: 0;
+  em{
+      font-size: 1rem;
+      padding: 0 .4rem;
+  }
+
+  &:hover{
+      cursor: pointer;
+      background: #eef4f6;
+  }
+  &:active{
+     background: #eef4f6;
+  }
+  &:focus{
+      outline: 0;
+  }
 }
 
 .percent_img{
     width: 1.5rem;
-
+    margin-top: 0;
 }
