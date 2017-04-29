@@ -25,28 +25,28 @@ class HomeComponent extends Component {
         <form className={styles.preferencesForm} onSubmit={this.props.onSubmit}>
           <h3>What is your affiliation?</h3>
           <p><input type='radio' name='party' value='republican' id="partyRepublican" />
-          <label className={styles.radioButton} htmlFor="partyRepublican">
-           <img src={republican} alt="" className={styles.partyIcon}/>
-           <span>I’m a staunch
-           <strong>Republican</strong>
-           </span></label></p>
+            <label className={styles.radioButton} htmlFor="partyRepublican">
+              <img src={republican} alt="" className={styles.partyIcon}/>
+              <span>I’m a staunch
+                <strong>Republican</strong>
+          </span></label></p>
           <p><input type='radio' name='party' value='democrat' id="partyDemocrat" />
-          <label className={styles.radioButton} htmlFor="partyDemocrat">
-           <img src={democrat} alt="" className={styles.partyIcon}/>
-           <span>I’m a proud
-           <strong>Democrat</strong>
-           </span></label></p>
+            <label className={styles.radioButton} htmlFor="partyDemocrat">
+              <img src={democrat} alt="" className={styles.partyIcon}/>
+              <span>I’m a proud
+                <strong>Democrat</strong>
+          </span></label></p>
           <h3><label htmlFor="state">Where do you want to live?</label></h3>
           <p><select name='state' id="state" className='small-12'>
-           {
+              {
                 STATES.map(({name, initials}) => <option key={initials} value={initials}>{name}</option>)
               }
           </select></p>
           <h3>Are you looking to buy or rent?</h3>
           <p><input type='checkbox' name='transaction' id="transactionBuy" value='buy' /><label className={styles.checkButton} htmlFor="transactionBuy">
-          Buy</label></p>
+              Buy</label></p>
           <p><input type='checkbox' name='transaction' id="transactionRent" value='rent' /><label className={styles.checkButton} htmlFor="transactionRent">
-          Rent</label></p>
+              Rent</label></p>
           <p><button className={styles.submit} type='submit'>Swing!</button></p>
         </form>
         { this.props.counties.length > 0 && <Redirect to='/search' /> }
@@ -64,13 +64,13 @@ const mapStateToProps = (state, ownProps) => {
 const mapDispatchToProps = (dispatch, ownProps) => {
   return {
     onSubmit(e) {
-    e.preventDefault()
+      e.preventDefault()
 
-    const {
-      party: { value: party },
-      state: { value: state },
-      transaction: { value: transaction },
-    } = e.currentTarget
+      const {
+        party: { value: party },
+        state: { value: state },
+        transaction: { value: transaction },
+      } = e.currentTarget
 
       dispatch(queryForCounties({ party, state, transaction }))
     }

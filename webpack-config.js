@@ -15,6 +15,7 @@ const appConfig = {
   devServer: {
     compress: true,
     contentBase: './dist',
+    historyApiFallback: true,
   },
 
   module: {
@@ -22,6 +23,7 @@ const appConfig = {
       {
         test: /\.js$/,
         use: 'babel-loader',
+        exclude: /(node_modules)/,
       },
       {
         test: /\.css/,
