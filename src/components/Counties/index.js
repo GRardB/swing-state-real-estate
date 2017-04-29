@@ -1,15 +1,18 @@
 import React from 'react'
+import styles from './styles.css'
 
 const Counties = ({ counties }) => (
-  <ul>
+  <div>
     {
       counties.map(county => (
-        <li>
-          {county.county_name}
-        </li>
+        <button key={county.name} className={styles.display}>
+          {county.name}
+          {county.dems}% Democrats
+          {county.reps}% Republicans
+        </button>
       ))
     }
-  </ul>
+  </div>
 )
 
 export default Counties
