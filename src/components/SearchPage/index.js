@@ -5,7 +5,7 @@ import {
 } from 'components'
 
 const SearchPage = () => (
-  <Counties />
+  { alert('wtf') || <Counties /> }
 )
 
 export default SearchPage
