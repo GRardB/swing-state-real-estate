@@ -10,12 +10,8 @@ export default function reducer(state = [], action) {
 }
 
 export const queryForCounties = ({ party, state, transaction }) => (dispatch) => {
-  const data = new FormData()
-  data.append('state', state)
-  data.append('transaction', transaction)
-
   fetch(
-    `http://localhost:3000/counties?state=${state}&transaction=${transaction}`
+    `http://swingstaterealestate.herokuapp.com/api/results?state=${state}&transaction=${transaction}`
   )
     .then((response) => response.json())
     .then((counties) => {

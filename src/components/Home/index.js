@@ -1,11 +1,13 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import { Redirect } from 'react-router'
 
 import {
-queryForCounties
+  queryForCounties
 } from 'modules'
 
 import styles from './styles.css';
+
 
 class HomeComponent extends Component {
   render() {
@@ -38,8 +40,15 @@ class HomeComponent extends Component {
           Rent</label></p>
           <p><button className={styles.submit} type='submit'>Submit</button></p>
         </form>
+        { this.props.counties.length > 0 && <Redirect to='/search' />}
       </div>
     )
+  }
+}
+
+const mapStateToProps = (state, ownProps) => {
+  return {
+    counties: state.counties
   }
 }
 
@@ -59,6 +68,6 @@ const mapDispatchToProps = (dispatch, ownProps) => {
   }
 }
 
-const Home = connect(null, mapDispatchToProps)(HomeComponent)
+const Home = connect(mapStateToProps, mapDispatchToProps)(HomeComponent)
 
 export default Home

@@ -15,9 +15,6 @@ const appConfig = {
   devServer: {
     compress: true,
     contentBase: './dist',
-    historyApiFallback: {
-      index: 'index.html'
-    }
   },
 
   module: {
@@ -35,6 +32,10 @@ const appConfig = {
             'sass-loader',
           ],
         }),
+      },
+      {
+        test: /\.png|\.svg|\.jpg/,
+        use: 'file-loader?name=[name].[ext]'
       },
     ],
   },
