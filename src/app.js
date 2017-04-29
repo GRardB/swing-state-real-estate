@@ -16,7 +16,8 @@ import {
 
 import reducers from './modules'
 import {
-  Home
+  Home,
+  SearchPage,
 } from './components'
 
 const store = createStore(
@@ -30,6 +31,7 @@ const App = () => (
     <Router>
       <div>
         <Route path="/" component={Home} />
+        <Route path="/search" component={SearchPage} />
       </div>
     </Router>
   </Provider>

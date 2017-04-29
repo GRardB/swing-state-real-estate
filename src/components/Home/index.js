@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import { Redirect } from 'react-router'
 
 import {
   queryForCounties
@@ -26,10 +27,7 @@ class HomeComponent extends Component {
           <div className='row'>
             <p className='small-12'>I would like to live in:</p>
             <select name='state' className='small-12'>
-              <option value='alaska'>Alaska</option>
-              <option value='arizona'>Arizona</option>
-              <option value='california'>California</option>
-              <option value='new york'>New York</option>
+              <option value='CA'>California</option>
             </select>
           </div>
           <div className='row'>
@@ -45,8 +43,15 @@ class HomeComponent extends Component {
           </div>
           <button className={styles.submit} type='submit'>Submit</button>
         </form>
+        { this.props.counties.length > 0 && <Redirect to='/search' />}
       </div>
     )
+  }
+}
+
+const mapStateToProps = (state, ownProps) => {
+  return {
+    counties: state.counties
   }
 }
 
@@ -66,6 +71,6 @@ const mapDispatchToProps = (dispatch, ownProps) => {
   }
 }
 
-const Home = connect(null, mapDispatchToProps)(HomeComponent)
+const Home = connect(mapStateToProps, mapDispatchToProps)(HomeComponent)
 
 export default Home
