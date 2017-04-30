@@ -38,7 +38,7 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
       const { state } = getState()
 
       dispatch(updateCenter(`${name}, ${state}, USA`))
-      dispatch(updateZoom(8))
+      dispatch(updateZoom(9))
       dispatch(chooseCounty({ name, state }))
       dispatch(queryForListings({ county: name, state }))
     })
