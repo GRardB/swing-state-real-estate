@@ -24,8 +24,19 @@ class MapComponent extends Component {
         zoom={[zoom]}
         containerStyle={{ height: '100vh', float: 'left', width: '64%' }}>
         {
-          polygon &&
+          polygon && polygon.features[0].geometry.type === 'Polygon' &&
             <GeoJSONLayer data={polygon} fillPaint={{ 'fill-color': fillColor, 'fill-opacity': 0.3 }} />
+        }
+        {
+          polygon && polygon.features[0].geometry.type === 'MultiPolygon' &&
+            <Layer type='fill' paint={{ 'fill-color': fillColor, 'fill-opacity': 0.3 }}>
+              {
+                console.log(polygon.features[0].geometry.coordinates) ||
+                  <Feature coordinates={
+                    polygon.features[0].geometry.coordinates.map(coords => [coords])
+                  } />
+              }
+            </Layer>
         }
         {
           markers.length > 0 && markers.map(({ lat, long }, index) => (
