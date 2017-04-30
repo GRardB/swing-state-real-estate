@@ -1,6 +1,7 @@
 import geocoder from 'google-geocoder'
 
 export const ADD_MARKER = 'ADD_MARKER'
+export const CLEAR_MARKERS = 'CLEAR_MARKERS'
 export const UPDATE_CENTER = 'UPDATE_CENTER'
 export const UPDATE_ZOOM = 'UPDATE_ZOOM'
 
@@ -23,6 +24,11 @@ export default function reducer(state = initialState, action) {
       return {
         ...state,
         zoom: action.zoom,
+      }
+    case CLEAR_MARKERS:
+      return {
+        ...state,
+        markers: [],
       }
     case ADD_MARKER:
       return {
@@ -62,6 +68,12 @@ export const updateZoom = (level) => (dispatch) => {
   })
 }
 
+export const clearMarkers = () => (dispatch) => {
+  dispatch({
+    type: CLEAR_MARKERS,
+  })
+}
+
 export const addMarker = ({ listings, state }) => (dispatch) => {
   listings.forEach(({
     address,
@@ -81,6 +93,7 @@ export const addMarker = ({ listings, state }) => (dispatch) => {
         marker: {
           lat,
           long: lng,
+          address,
         }
       })
     })
