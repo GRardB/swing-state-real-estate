@@ -11,7 +11,7 @@ export default function reducer(state = [], action) {
 
 export const queryForListings = ({ county, state }) => (dispatch) => {
   fetch(
-    `http://swingstaterealestate.herokuapp.com/api/housing?county=${county}&state=${state}`
+    `http://swingst.herokuapp.com/api/housing?county=${county}&state=${state}`
   )
     .then((response) => response.json())
     .then((listings) => {

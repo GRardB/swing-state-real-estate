@@ -14,7 +14,7 @@ export default function reducer(state = [], action) {
 export const queryForCounties = ({ party, state, transaction }) => (dispatch) => {
   dispatch(updateCenter(`${state}, USA`, () => {
     fetch(
-      `http://swingstaterealestate.herokuapp.com/api/results?state=${state}&transaction=${transaction}`
+      `http://swingst.herokuapp.com/api/results?state=${state}&transaction=${transaction}`
     )
       .then((response) => response.json())
       .then(normalizeCounties)
