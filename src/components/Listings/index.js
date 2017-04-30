@@ -10,7 +10,7 @@ class ListingsComponent extends Component {
     return (
       <div className={styles.container}>
         <header className={styles.pageTitle}>
-          Availlable listings in {county}, {state}
+          Make a difference in <strong>{county}, {state}</strong>
         </header>
         {
           listings.map((listing, index) => (
@@ -19,7 +19,7 @@ class ListingsComponent extends Component {
               key={`listing-${index}`}
               target='_blank'
               href={`http://trulia.com/${listing.rel_link}`}>
-              <h3>{listing.price}</h3><small className={styles.label}>{listing.bedrooms}/{listing.baths}</small>
+              <h3>{listing.price} <small className={styles.label}>{listing.bedrooms}/{listing.baths}</small></h3>
               <p>{listing.square_ft} sqft</p>
               <p><small>{listing.address}, {listing.city}</small></p>
             </a>

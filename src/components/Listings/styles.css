@@ -7,7 +7,10 @@
     overflow: auto;
 }
 .items {
-    background: white;
+    background-color: white;
+    background-position:right 24px center;
+    background-repeat:no-repeat;
+    background-size:auto 80%;
     border-bottom:4px #eef4f6 solid;
     border-radius: 0;
     color: #455468;
@@ -19,14 +22,19 @@
     width: 100%;
     text-decoration:none;
     line-height:1.2;
+    background-image:url(./house1.png);
     small {
-        font-size:0.9rem;
+        font-size:0.85rem;
     }
     * + * {
         margin-top:0;
     }
 
     &:hover{
+      background-image:url(./arrow.png) !important;
+      background-size:50px !important;
+      background-repeat:no-repeat !important;
+      background-position:right 24px center !important;
       cursor: pointer;
       background: #eef4f6;
       .label {
@@ -38,6 +46,55 @@
     }
     &:focus{
       outline: 0;
+    }
+    h3 {
+      padding:0;
+      border-bottom:0;
+    }
+    &:nth-child(2n) {
+      background-image:url(./house2.png);
+    }
+    &:nth-child(3n) {
+      background-image:url(./house3.png);
+    }
+    &:nth-child(4n) {
+      background-image:url(./house4.png);
+    }
+    &:nth-child(5n) {
+      background-image:url(./house5.png);
+    }
+    &:nth-child(6n) {
+      background-image:url(./house6.png);
+    }
+    &:nth-child(7n) {
+      background-image:url(./house7.png);
+    }
+    &:nth-child(8n) {
+      background-image:url(./house8.png);
+    }
+    &:nth-child(9n) {
+      background-image:url(./house9.png);
+    }
+    &:nth-child(10n) {
+      background-image:url(./house10.png);
+    }
+    &:nth-child(11n) {
+      background-image:url(./house11.png);
+    }
+    &:nth-child(12n) {
+      background-image:url(./house12.png);
+    }
+    &:nth-child(13n) {
+      background-image:url(./house13.png);
+    }
+    &:nth-child(14n) {
+      background-image:url(./house14.png);
+    }
+    &:nth-child(15n) {
+      background-image:url(./house15.png);
+    }
+    &:nth-child(16n) {
+      background-image:url(./house16.png);
     }
 }
 .label {
