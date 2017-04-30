@@ -71,7 +71,6 @@ export const addMarker = ({ listings, state }) => (dispatch) => {
 
     geo.find(location, (err, [ geoPlace ]) => {
       if (geoPlace === undefined) {
-        console.log(location)
         return
       }
 
