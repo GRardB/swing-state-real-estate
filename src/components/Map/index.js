@@ -3,14 +3,15 @@ import { connect } from 'react-redux'
 import ReactMapboxGl, {
   Layer,
   Feature,
+  Marker,
   GeoJSONLayer,
 } from 'react-mapbox-gl'
 
-import stateGeoJSON from 'data/state_geo.json'
+import homeMarker from './home-15.svg'
 
 class MapComponent extends Component {
   render() {
-    const { lat, long, zoom, polygon, party } = this.props
+    const { lat, long, markers, zoom, polygon, party } = this.props
 
     const fillColor = party === 'republican' ? '#58BFE6' : '#FF0000'
 
@@ -26,11 +27,13 @@ class MapComponent extends Component {
           polygon &&
             <GeoJSONLayer data={polygon} fillPaint={{ 'fill-color': fillColor, 'fill-opacity': 0.3 }} />
         }
-        <Layer
-          id='marker'
-          layout={{ 'icon-image': 'marker-15' }}
-          type='symbol'>
-        </Layer>
+        {
+          markers.length > 0 && markers.map(({ lat, long }, index) => (
+            <Marker coordinates={[ long, lat ]} anchor='center' key={`marker-${index}`}>
+              <img src={homeMarker} />
+            </Marker>
+          ))
+        }
       </ReactMapboxGl>
     )
   }
@@ -40,6 +43,7 @@ const mapStateToProps = (state, ownProps) => {
   return {
     lat: state.map.lat,
     long: state.map.long,
+    markers: state.map.markers,
     party: state.party,
     polygon: state.polygon,
     zoom: state.map.zoom,

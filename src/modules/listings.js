@@ -1,3 +1,5 @@
+import { addMarker } from './map'
+
 export const LISTINGS_SUCCESS = 'LISTINGS_SUCCESS'
 
 export default function reducer(state = [], action) {
@@ -16,6 +18,8 @@ export const queryForListings = ({ county, state }) => (dispatch) => {
   )
     .then((response) => response.json())
     .then((listings) => {
+      dispatch(addMarker({ listings, state }))
+
       dispatch({
         type: LISTINGS_SUCCESS,
         listings,

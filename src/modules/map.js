@@ -1,5 +1,6 @@
 import geocoder from 'google-geocoder'
 
+export const ADD_MARKER = 'ADD_MARKER'
 export const UPDATE_CENTER = 'UPDATE_CENTER'
 export const UPDATE_ZOOM = 'UPDATE_ZOOM'
 
@@ -7,6 +8,7 @@ const initialState = {
   lat: 39.50,
   long: -98.35,
   zoom: 5,
+  markers: [],
 }
 
 export default function reducer(state = initialState, action) {
@@ -21,6 +23,14 @@ export default function reducer(state = initialState, action) {
       return {
         ...state,
         zoom: action.zoom,
+      }
+    case ADD_MARKER:
+      return {
+        ...state,
+        markers: [
+          ...state.markers,
+          action.marker,
+        ],
       }
     default:
       return state
@@ -49,5 +59,31 @@ export const updateZoom = (level) => (dispatch) => {
   dispatch({
     type: UPDATE_ZOOM,
     zoom: level,
+  })
+}
+
+export const addMarker = ({ listings, state }) => (dispatch) => {
+  listings.forEach(({
+    address,
+    city,
+  }) => {
+    const location = `${address}, ${city}, ${state}`
+
+    geo.find(location, (err, [ geoPlace ]) => {
+      if (geoPlace === undefined) {
+        console.log(location)
+        return
+      }
+
+      const { location: { lat, lng } } = geoPlace
+
+      dispatch({
+        type: ADD_MARKER,
+        marker: {
+          lat,
+          long: lng,
+        }
+      })
+    })
   })
 }
