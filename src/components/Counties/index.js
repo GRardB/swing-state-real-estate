@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 
 import {
   chooseCounty,
+  queryForListings,
   updateCenter,
   updateZoom,
 } from 'modules'
@@ -39,6 +40,7 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
       dispatch(updateCenter(`${name}, ${state}, USA`))
       dispatch(updateZoom(8))
       dispatch(chooseCounty({ name, state }))
+      dispatch(queryForListings({ county: name, state }))
     })
   }
 })

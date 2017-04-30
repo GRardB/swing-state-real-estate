@@ -8,6 +8,7 @@ import arrow from './back-arrow.png'
 
 import {
   Counties,
+  Listings,
   Map,
 } from 'components'
 
@@ -17,7 +18,13 @@ class SearchPageComponent extends Component {
       <div className={styles.background}>
         <Map />
         <a href="/"><img src={arrow} className={styles.arrow}/></a>
-        <Counties counties={this.props.counties} />
+        {
+          this.props.listings.length > 0
+            ?
+              <Listings listings={this.props.listings} />
+            :
+              <Counties counties={this.props.counties} />
+        }
       </div>
     )
   }
@@ -25,6 +32,7 @@ class SearchPageComponent extends Component {
 
 const mapStateToProps = (state, ownProps) => ({
   counties: state.counties,
+  listings: state.listings,
 })
 
 const SearchPage = connect(mapStateToProps)(SearchPageComponent)
