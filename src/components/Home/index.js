@@ -9,6 +9,7 @@ import {
 import styles from './styles.css';
 import republican from './republican.png';
 import democrat from './democrat.png';
+import tagline from './tagline.png';
 
 
 class HomeComponent extends Component {
@@ -17,8 +18,9 @@ class HomeComponent extends Component {
       <div className={styles.container}>
         <main className={styles.page}>
           <div className={styles.content}>
-            <h1 className={styles.swing}>Swing State <br />Real Estate</h1>
-            <p>It’s safe to assume that Alabama will vote Republican and California will vote Democrat. But the electoral results of swing states are up in the air, giving their voters more impact.</p>
+            <h1 className={styles.swing}>Swing State Real Estate</h1>
+            <p><img src={tagline} alt="Making your vote count" className={styles.tagline} /></p>
+            <p>It’s safe to assume that Alabama will vote Republican and California will vote Democrat, but the electoral results of swing states are up in the air, giving their voters more impact.</p>
             <p>Swing State Real Estate helps you find out where you can live so your vote is most influential.</p>
           </div>
         </main>

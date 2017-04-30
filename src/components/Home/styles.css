@@ -57,7 +57,7 @@ body {
   text-align:center;
 }
 h1 {
-  font-size:3rem;
+  font-size:2.8rem;
   line-height:1.1;
 }
 h2 {
@@ -95,6 +95,9 @@ label {
     font-style:normal;
     display:block;
   }
+}
+.tagline {
+  height:2.4rem;
 }
 .radioButton,.checkButton {
   display:block;
