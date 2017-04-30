@@ -49,12 +49,12 @@ const County = connect(null, mapDispatchToProps)(CountyComponent)
 
 class CountiesComponent extends Component {
   render() {
-    const {counties, party} = this.props
+    const {counties, party, state} = this.props
 
     return (
       <div className={styles.counties}>
         <header className={styles.pageTitle}>
-          <strong>{party}, eh?</strong> Check out the counties below. The topmost ones would be most influenced by your vote.
+          <strong>{party} in {state}, eh?</strong> Check out the counties below. The topmost ones would be most influenced by your vote.
         </header>
         {counties.map((county, index) => <County key={`county-${index}`} {...county} />)}
       </div>
@@ -63,7 +63,8 @@ class CountiesComponent extends Component {
 }
 
 const mapStateToProps = (state) => ({
-  party: state.party.charAt(0).toUpperCase() + state.party.slice(1)
+  party: state.party.charAt(0).toUpperCase() + state.party.slice(1),
+  state: state.state
 })
 
 const Counties = connect(mapStateToProps)(CountiesComponent)
