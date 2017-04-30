@@ -152,6 +152,7 @@ select {
   border-radius:1rem;
   border:0;
   font:inherit;
+  color:$pomp;
   &:focus {
     outline:0;
   }
