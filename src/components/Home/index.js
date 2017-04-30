@@ -43,7 +43,7 @@ class HomeComponent extends Component {
               }
           </select></p>
           <h3>Are you looking to buy or rent?</h3>
-          <p><input type='checkbox' name='transaction' id="transactionBuy" value='buy' /><label className={styles.checkButton} htmlFor="transactionBuy">
+          <p><input type='checkbox' name='transaction' id="transactionBuy" value='buy' checked /><label className={styles.checkButton} htmlFor="transactionBuy">
               Buy</label></p>
           <p><input type='checkbox' name='transaction' id="transactionRent" value='rent' /><label className={styles.checkButton} htmlFor="transactionRent">
               Rent</label></p>
