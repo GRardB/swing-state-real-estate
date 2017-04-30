@@ -16,6 +16,7 @@ const appConfig = {
     compress: true,
     contentBase: './dist',
     historyApiFallback: true,
+    disableHostCheck: true,
   },
 
   module: {
