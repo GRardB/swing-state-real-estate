@@ -74,7 +74,9 @@ const mapDispatchToProps = (dispatch, ownProps) => {
         transaction: { value: transaction },
       } = e.currentTarget
 
-      dispatch(queryForCounties({ party, state, transaction }))
+      if (party) {
+        dispatch(queryForCounties({ party, state, transaction }))
+      }
     }
   }
 }
