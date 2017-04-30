@@ -27,3 +27,9 @@ export const queryForListings = ({ county, state }) => (dispatch) => {
     })
 }
 
+export const removeListings = () => (dispatch) => {
+  dispatch({
+    type: LISTINGS_SUCCESS,
+    listings: [],
+  })
+}
