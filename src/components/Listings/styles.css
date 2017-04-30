@@ -1,3 +1,62 @@
 .random {
   background-color: blue;
 }
+
+/*
+.container {
+    max-height: 100vh;
+    overflow: auto;
+}
+.items {
+    background: white;
+    border-bottom:4px #eef4f6 solid;
+    border-radius: 0;
+    color: #455468;
+    display: block;
+    font-family: "Asap";
+    font-size: 1.2rem;
+    line-height: 1.2;
+    padding: 0.8rem;
+    width: 100%;
+    text-decoration:none;
+    line-height:1.2;
+    small {
+        font-size:0.9rem;
+    }
+    * + * {
+        margin-top:0;
+    }
+
+    &:hover{
+      cursor: pointer;
+      background: #eef4f6;
+      .label {
+          border:2px #fff solid;
+      }
+    }
+    &:active{
+      background: #eef4f6;
+    }
+    &:focus{
+      outline: 0;
+    }
+}
+.label {
+    background:#eef4f6;
+    display:inline-block;
+    padding:4px 8px;
+    border-radius:100px;
+    border:2px #eef4f6 solid;
+}
+.pageTitle {
+  background:#29394D;
+  padding:0.8rem 1.6rem;
+  text-align:center;
+  line-height:1.2;
+  a {
+      font-weight:700;
+      color:#fff;
+      text-decoration:none;
+  }
+}
+*/
