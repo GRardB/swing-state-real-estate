@@ -1,0 +1,126 @@
+<div class="loader">
+	<div class="stars">
+		<img src="star1.png" class="star star1" alt="Loading..." />
+		<img src="star2.png" class="star star2" alt="" />
+		<img src="star3.png" class="star star3" alt="" />
+	</div>
+	<div class="bar">
+
+	</div>
+</div>
+<style>
+html, body {
+	background:#2a3a4e;
+	min-height:100%;
+}
+.loader {
+	text-align:center;
+	position:absolute;
+	width:100%;
+	top:50%;
+	transform:translateY(-50%);
+}
+.star {
+	height:1rem;
+	margin:0 0.2rem;
+}
+.bar {
+	height:0.3rem;
+	background:#eef4f6;
+	max-width:5rem;
+	margin:0.4rem auto 0;
+	border-radius:100px;
+	transform-origin:top center;
+    transform: rotate3d(0, 0, 1, 15deg);
+}
+.stars {
+	transform-origin:bottom center;
+    transform: rotate3d(0, 0, 1, 15deg);
+}
+.bar, .stars {
+	animation-name: swing;
+	animation-iteration-count: infinite;
+  	animation-duration: 1.5s;
+  	animation-fill-mode: both;
+  	animation-timing-function:ease-in-out;
+    transform: rotate3d(0, 0, 1, -10deg);
+}
+.star {
+	animation-iteration-count: infinite;
+  	animation-duration: 1.5s;
+  	animation-fill-mode: both;
+  	animation-timing-function: cubic-bezier(0.6, -0.28, 0.735, 0.045);
+}
+.star1 {
+	animation-name: star1;
+}
+.star2 {
+	animation-name: star2;
+}
+.star3 {
+	animation-name: star3;
+}
+@keyframes swing {
+  0% {
+    transform: rotate3d(0, 0, 1, -10deg);
+  }
+  50% {
+    transform: rotate3d(0, 0, 1, 10deg);
+  }
+  100% {
+    transform: rotate3d(0, 0, 1, -10deg);
+  }
+}
+@keyframes star1 {
+  0% {
+    transform:translateY(25%);
+  }
+  10% {
+    transform:translateY(25%);
+  }
+  60% {
+    transform:translateY(-50%);
+  }
+  90% {
+  	transform:translateY(25%);
+  }
+  100% {
+  	transform:translateY(20%);
+  }
+}
+@keyframes star2 {
+  0% {
+    transform:translateY(25%);
+  }
+  10% {
+    transform:translateY(25%);
+  }
+  60% {
+    transform:translateY(-35%);
+  }
+  90% {
+  	transform:translateY(25%);
+  }
+  100% {
+  	transform:translateY(20%);
+  }
+}
+@keyframes star3 {
+  0% {
+    transform:translateY(25%);
+  }
+  10% {
+    transform:translateY(25%);
+  }
+  60% {
+    transform:translateY(-20%);
+  }
+  90% {
+  	transform:translateY(25%);
+  }
+  100% {
+  	transform:translateY(20%);
+  }
+}
+
+</style>
