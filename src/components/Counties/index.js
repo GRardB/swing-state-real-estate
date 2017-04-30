@@ -36,7 +36,7 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
       const { state } = getState()
 
       dispatch(updateCenter(`${name}, ${state}, USA`))
-      dispatch(updateZoom(7))
+      dispatch(updateZoom(8))
     })
   }
 })

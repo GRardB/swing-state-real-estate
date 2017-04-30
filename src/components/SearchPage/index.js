@@ -1,5 +1,10 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import { browserHistory } from 'react-router'
+import { Link } from 'react-router-dom';
+import styles from './styles.css'
+
+import arrow from './back-arrow.png'
 
 import {
   Counties,
@@ -9,8 +14,9 @@ import {
 class SearchPageComponent extends Component {
   render() {
     return (
-      <div>
+      <div className={styles.background}>
         <Map />
+        <a href="/"><img src={arrow} className={styles.arrow}/></a>
         <Counties counties={this.props.counties} />
       </div>
     )
