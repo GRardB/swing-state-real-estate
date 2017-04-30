@@ -126,13 +126,13 @@ input[type="checkbox"] {
 label[for="partyRepublican"]:hover { 
   img {
     transition:transform 0.25s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-    transform:rotate(6deg);
+    transform:rotate(-6deg);
   }
 }
 label[for="partyDemocrat"]:hover { 
   img {
     transition:transform 0.25s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-    transform:rotate(-6deg);
+    transform:rotate(6deg);
   }
 }
 select {
