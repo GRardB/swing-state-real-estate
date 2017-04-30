@@ -43,13 +43,25 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
 
 const County = connect(null, mapDispatchToProps)(CountyComponent)
 
-const Counties = ({ counties }) => (
-  <div className={styles.counties}>
-    <header className={styles.pageTitle}>
-      <strong>Republican, eh?</strong> Check out the counties below. The topmost ones would be most influenced by your vote.
-    </header>
-    {counties.map((county, index) => <County key={`county-${index}`} {...county} />)}
-  </div>
-)
+class CountiesComponent extends Component {
+  render() {
+    const {counties, party} = this.props
+
+    return (
+      <div className={styles.counties}>
+        <header className={styles.pageTitle}>
+          <strong>{party}, eh?</strong> Check out the counties below. The topmost ones would be most influenced by your vote.
+        </header>
+        {counties.map((county, index) => <County key={`county-${index}`} {...county} />)}
+      </div>
+    )
+  }
+}
+
+const mapStateToProps = (state) => ({
+  party: state.party.charAt(0).toUpperCase() + state.party.slice(1)
+})
+
+const Counties = connect(mapStateToProps)(CountiesComponent)
 
 export default Counties
