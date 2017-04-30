@@ -1,17 +1,51 @@
-import React from 'react'
+import React, { Component } from 'react'
+import { connect } from 'react-redux'
+
+import {
+  updateCenter,
+  updateZoom,
+} from 'modules'
+
 import styles from './styles.css'
+
+class CountyComponent extends Component {
+  render() {
+    const { name, dems, reps } = this.props
+
+    return (
+      <button
+        className={styles.display}
+        data-id={name}
+        onClick={this.props.onClick}>
+        <h2>{name}</h2>
+        <img src="democrat.png" alt="Democrats" title="Democrats" className={styles.percent_img} />
+        <em>{dems}%</em>
+        &nbsp; &nbsp;
+        <img src="republican.png" alt="Republicans" title="Republicans" className={styles.percent_img} />
+        <em>{reps}%</em>
+      </button>
+    )
+  }
+}
+
+const mapDispatchToProps = (dispatch, ownProps) => ({
+  onClick(e) {
+    const name = e.currentTarget.attributes['data-id'].value
+
+    dispatch((dispatch, getState) => {
+      const { state } = getState()
+
+      dispatch(updateCenter(`${name}, ${state}, USA`))
+      dispatch(updateZoom(7))
+    })
+  }
+})
+
+const County = connect(null, mapDispatchToProps)(CountyComponent)
 
 const Counties = ({ counties }) => (
   <div className={styles.counties}>
-    {
-      counties.map(county => (
-        <button key={county.name} className={styles.display}>
-          <h2>{county.name}</h2>
-          <img src="democrat.png" alt="Democrats" title="Democrats" className={styles.percent_img} /><em>{county.dems}%</em>&nbsp; &nbsp;
-          <img src="republican.png" alt="Republicans" title="Republicans" className={styles.percent_img} /><em>{county.reps}%</em>
-        </button>
-      ))
-    }
+    {counties.map((county, index) => <County key={`county-${index}`} {...county} />)}
   </div>
 )
 
