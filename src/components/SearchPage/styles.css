@@ -1,0 +1,10 @@
+.background {
+  background-color: white;
+}
+
+.arrow {
+  left: 10px;
+  position: absolute;
+  top: 10px;
+  height: 50px;
+}
