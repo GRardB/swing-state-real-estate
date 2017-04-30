@@ -1,3 +1,7 @@
+import geocoder from 'google-geocoder'
+
+import { updateMarker } from './map'
+
 export const COUNTIES_SUCCESS = 'COUNTIES_SUCCESS'
 
 export default function reducer(state = [], action) {
@@ -20,23 +24,23 @@ export const queryForCounties = ({ party, state, transaction }) => (dispatch) =>
         party === 'democrat' ? dems < reps : reps < dems
       ))
     ))
+    .then(sortCounties)
     .then((counties) => {
-      counties.sort((countyA, countyB) => {
-        const maxA = Math.max(countyA.dems, countyA.reps)
-        const minA = Math.min(countyA.dems, countyA.reps)
 
-        const maxB = Math.max(countyB.dems, countyB.reps)
-        const minB = Math.min(countyB.dems, countyB.reps)
-
-        const diffA = maxA - minA
-        const diffB = maxB - minB
-
-        return diffA - diffB
+      const county = counties[0].name
+      const geo = geocoder({
+        key: 'AIzaSyDdENXKI_Useux6MSXqHenyxNQbe80385c'
       })
-      dispatch({
-        type: COUNTIES_SUCCESS,
-        counties,
-        party,
+      geo.find(`${state}, USA`, (err, [ geoPlace ]) => {
+        const { location: { lat, lng } } = geoPlace
+        dispatch(updateMarker(lat, lng))
+
+        dispatch({
+          type: COUNTIES_SUCCESS,
+          counties,
+          party,
+          state,
+        })
       })
     })
 }
@@ -49,4 +53,19 @@ const normalizeCounties = (counties) => (
       reps: Math.round(parseFloat(county.per_gop) * 100)
     }
   ))
+)
+
+const sortCounties = (counties) => (
+  counties.sort((countyA, countyB) => {
+    const maxA = Math.max(countyA.dems, countyA.reps)
+    const minA = Math.min(countyA.dems, countyA.reps)
+
+    const maxB = Math.max(countyB.dems, countyB.reps)
+    const minB = Math.min(countyB.dems, countyB.reps)
+
+    const diffA = maxA - minA
+    const diffB = maxB - minB
+
+    return diffA - diffB
+  })
 )
