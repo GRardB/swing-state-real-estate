@@ -44,7 +44,7 @@ export default function reducer(state = initialState, action) {
 }
 
 const geo = geocoder({
-  key: 'AIzaSyATGU9cIgO73e-XArkL6rWMZrm6NlIYhT8',
+  key: 'AIzaSyBj_Qp-Eite_iDH6vdr_7X1dpSkioCv2ds',
 })
 
 export const updateCenter = (locationName, callback = null) => (dispatch) => {
