@@ -19,6 +19,15 @@ h1, h2, h3, p {
     margin:1rem 0 0;
   }
 }
+::-moz-selection { /* Code for Firefox */
+    color:$white;
+    background:$pomp;
+}
+
+::selection {
+    color:$white; 
+    background:$pomp;
+}
 html, body {
   box-sizing:border-box;
   font-size:16px;
