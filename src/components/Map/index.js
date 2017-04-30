@@ -2,13 +2,16 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import ReactMapboxGl, { Layer, Feature } from 'react-mapbox-gl'
 
+import mapstyle from './mapstyle.json';
+
 class MapComponent extends Component {
   render() {
     const { lat, long, zoom } = this.props
 
     return (
       <ReactMapboxGl
-        style='mapbox://styles/mapbox/streets-v8'
+        style='mapbox://styles/mapbox/basic-v8'
+
         accessToken='pk.eyJ1IjoiZ3JhcmRiIiwiYSI6ImNqMjN1NDh4ODAwMGUzM3BjY2JkMXZ2anIifQ.pqczKVB_obiD7Hnb7ngtvw'
         center={[ long, lat ]}
         zoom={[zoom]}
