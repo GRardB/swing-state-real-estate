@@ -4,8 +4,6 @@ import countyGeoJSON from 'data/county_geo.json'
 import { CHOOSE_COUNTY } from './county'
 import { COUNTIES_SUCCESS } from './counties'
 
-console.log(stateGeoJSON)
-
 export default function reducer(state = null, action) {
   switch(action.type) {
     case COUNTIES_SUCCESS:
