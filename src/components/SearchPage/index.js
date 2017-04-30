@@ -12,12 +12,14 @@ import {
   Map,
 } from 'components'
 
+const BACK_URL = IS_PRODUCTION ? '/swing-state-real-estate' : '/'
+
 class SearchPageComponent extends Component {
   render() {
     return (
       <div className={styles.background}>
         <Map />
-        <a href="/"><img src={arrow} className={styles.arrow}/></a>
+        <a href={BACK_URL}><img src={arrow} className={styles.arrow}/></a>
         {
           this.props.listings.length > 0
             ?
