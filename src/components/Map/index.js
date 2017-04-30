@@ -31,10 +31,9 @@ class MapComponent extends Component {
           polygon && polygon.features[0].geometry.type === 'MultiPolygon' &&
             <Layer type='fill' paint={{ 'fill-color': fillColor, 'fill-opacity': 0.3 }}>
               {
-                console.log(polygon.features[0].geometry.coordinates) ||
-                  <Feature coordinates={
-                    polygon.features[0].geometry.coordinates.map(coords => [coords])
-                  } />
+                <Feature coordinates={
+                  polygon.features[0].geometry.coordinates.map(coords => [coords])
+                } />
               }
             </Layer>
         }

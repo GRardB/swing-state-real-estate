@@ -44,11 +44,15 @@ export default function reducer(state = initialState, action) {
 }
 
 const geo = geocoder({
-  key: 'AIzaSyDdENXKI_Useux6MSXqHenyxNQbe80385c'
+  key: 'AIzaSyATGU9cIgO73e-XArkL6rWMZrm6NlIYhT8',
 })
 
 export const updateCenter = (locationName, callback = null) => (dispatch) => {
-  geo.find(locationName, (err, [ geoPlace ]) => {
+  geo.find(locationName, (err, data) => {
+    if (!data || data.length === 0) return;
+
+    const [ geoPlace ] = data
+
     const { location: { lat, lng } } = geoPlace
 
     dispatch({
@@ -81,7 +85,11 @@ export const addMarker = ({ listings, state }) => (dispatch) => {
   }) => {
     const location = `${address}, ${city}, ${state}`
 
-    geo.find(location, (err, [ geoPlace ]) => {
+    geo.find(location, (err, data) => {
+      if (!data || data.length === 0) return;
+
+      const [ geoPlace ] = data
+
       if (geoPlace === undefined) {
         return
       }
