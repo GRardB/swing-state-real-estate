@@ -45,6 +45,9 @@ const County = connect(null, mapDispatchToProps)(CountyComponent)
 
 const Counties = ({ counties }) => (
   <div className={styles.counties}>
+    <header className={styles.pageTitle}>
+      <strong>Republican, eh?</strong> Check out the counties below. The topmost ones would be most influenced by your vote.
+    </header>
     {counties.map((county, index) => <County key={`county-${index}`} {...county} />)}
   </div>
 )

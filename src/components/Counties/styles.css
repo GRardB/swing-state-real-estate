@@ -8,7 +8,10 @@ $breakpoint:'min-width:1024px'; // landscape tablet
   overflow: auto;
   width: 36%;
 }
-
+.pageTitle {
+  padding:0.8rem 1.6rem;
+  text-align:center;
+}
 .display {
   background: white;
   border-bottom:4px #eef4f6 solid;
