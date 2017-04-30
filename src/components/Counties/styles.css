@@ -11,6 +11,7 @@ $breakpoint:'min-width:1024px'; // landscape tablet
 .pageTitle {
   padding:0.8rem 1.6rem;
   text-align:center;
+  line-height:1.2;
 }
 .display {
   background: white;
