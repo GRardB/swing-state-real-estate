@@ -3,7 +3,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const path = require('path')
 const webpack = require('webpack')
 
-const PATH = __dirname + '/dist'
+const PATH = __dirname + '/docs'
 
 const appConfig = {
   entry: {
@@ -14,7 +14,7 @@ const appConfig = {
 
   devServer: {
     compress: true,
-    contentBase: './dist',
+    contentBase: './docs',
     historyApiFallback: true,
     disableHostCheck: true,
   },
