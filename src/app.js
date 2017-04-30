@@ -9,7 +9,7 @@ import {
 } from 'redux'
 
 import {
-  BrowserRouter as Router,
+  HashRouter as Router,
   Route,
   Link,
 } from 'react-router-dom'
