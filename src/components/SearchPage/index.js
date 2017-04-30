@@ -3,11 +3,17 @@ import { connect } from 'react-redux'
 
 import {
   Counties,
+  Map,
 } from 'components'
 
 class SearchPageComponent extends Component {
   render() {
-    return <Counties counties={this.props.counties} />
+    return (
+      <div>
+        <Map />
+        <Counties counties={this.props.counties} />
+      </div>
+    )
   }
 }
 

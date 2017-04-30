@@ -2,7 +2,7 @@ import React from 'react'
 import styles from './styles.css'
 
 const Counties = ({ counties }) => (
-  <div>
+  <div className={styles.counties}>
     {
       counties.map(county => (
         <button key={county.name} className={styles.display}>

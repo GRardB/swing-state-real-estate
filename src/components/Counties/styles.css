@@ -2,37 +2,43 @@
 
 $breakpoint:'min-width:1024px'; // landscape tablet
 
+.counties {
+  float: right;
+  max-height: 100vh;
+  overflow: auto;
+  width: 36%;
+}
+
 .display {
+  background: white;
+  border-bottom:4px #eef4f6 solid;
+  border-radius: 0;
+  color: #455468;
   display: block;
   font-family: "Asap";
   font-size: 1.2rem;
   line-height: 1.2;
-  color: #455468;
-  background: white;
-  width: 36%;
   padding: 0.8rem;
-  border-bottom:4px #eef4f6 solid;
-  float: right;
-  clear: right;
-  border-radius: 0;
+  width: 100%;
+
   em{
-      font-size: 1rem;
-      padding: 0 .4rem;
+    font-size: 1rem;
+    padding: 0 .4rem;
   }
 
   &:hover{
-      cursor: pointer;
-      background: #eef4f6;
+    cursor: pointer;
+    background: #eef4f6;
   }
   &:active{
-     background: #eef4f6;
+    background: #eef4f6;
   }
   &:focus{
-      outline: 0;
+    outline: 0;
   }
 }
 
 .percent_img{
-    width: 1.5rem;
-    margin-top: 0;
+  width: 1.5rem;
+  margin-top: 0;
 }
