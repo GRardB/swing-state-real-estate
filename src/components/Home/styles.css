@@ -60,6 +60,9 @@ h3 {
   line-height:1.2;
   border-bottom:4px $establishment solid;
   padding-bottom:1rem;
+  label {
+    text-transform:none;
+  }
 }
 .partyIcon {
   width:3rem;
